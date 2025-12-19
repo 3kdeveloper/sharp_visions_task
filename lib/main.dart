@@ -32,12 +32,8 @@ class MyApp extends StatelessWidget {
 
 Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  ///! To show the ios status bar widgets.
-  // await SystemChrome.setEnabledSystemUIMode(
-  //   SystemUiMode.manual,
-  //   overlays: [SystemUiOverlay.top],
-  // );
   await initDependencies();
   await FastCachedImageConfig.init();
+
+  // await locator<SecureStorageService>().clear();
 }

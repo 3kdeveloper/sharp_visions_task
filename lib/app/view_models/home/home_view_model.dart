@@ -46,6 +46,8 @@ class HomeViewModel extends ChangeNotifier {
 
           final isLastPage = page == lastPage;
 
+          logger.f('Page: $isLastPage $page $lastPage');
+
           if (isLastPage) {
             pagingController.appendLastPage(products);
           } else {

@@ -4,28 +4,9 @@ part 'pagination_model.g.dart';
 
 @JsonSerializable()
 class PaginationModel {
-  PaginationModel({
-    this.currentPage,
-    this.firstPageUrl,
-    this.from,
-    this.nextPageUrl,
-    this.path,
-    this.perPage,
-    this.prevPageUrl,
-    this.to,
-    this.total,
-    this.lastPage,
-  });
+  PaginationModel({this.lastPage});
 
-  final int? currentPage;
-  final String? firstPageUrl;
-  final int? from;
-  final String? nextPageUrl;
-  final String? path;
-  final int? perPage;
-  final String? prevPageUrl;
-  final int? to;
-  final int? total;
+  @JsonKey(name: 'last_page')
   final int? lastPage;
 
   factory PaginationModel.fromJson(Map<String, dynamic> json) =>

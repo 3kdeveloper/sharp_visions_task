@@ -83,6 +83,8 @@ class ProductCardWidget extends StatelessWidget {
                 SizedBox(height: 6),
                 TextViewWidget(
                   item.salesDescription ?? '',
+                  maxLines: 1,
+                  isEllipsis: true,
                   style: textTheme.labelSmall?.copyWith(
                     color: AppColors.blackColor.withValues(alpha: 0.6),
                   ),

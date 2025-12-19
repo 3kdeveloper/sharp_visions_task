@@ -19,18 +19,16 @@ class TextViewWidget extends StatelessWidget {
   final int? maxLines;
 
   @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      textScaler: textScaleFactor ? const TextScaler.linear(1.0) : null,
-      overflow: isEllipsis ? TextOverflow.ellipsis : null,
-      softWrap: true,
-      style: style ?? textTheme.labelMedium,
-      maxLines: maxLines,
-      textHeightBehavior: const TextHeightBehavior(
-        applyHeightToFirstAscent: false,
-      ),
-      textAlign: align,
-    );
-  }
+  Widget build(BuildContext context) => Text(
+    text,
+    textScaler: textScaleFactor ? const TextScaler.linear(1.0) : null,
+    overflow: isEllipsis ? TextOverflow.ellipsis : null,
+    softWrap: true,
+    style: style ?? textTheme.labelMedium,
+    maxLines: maxLines,
+    textHeightBehavior: const TextHeightBehavior(
+      applyHeightToFirstAscent: false,
+    ),
+    textAlign: align,
+  );
 }

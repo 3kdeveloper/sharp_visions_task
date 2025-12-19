@@ -103,6 +103,12 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                   ),
+                  noMoreItemsIndicatorBuilder: (context) => Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: TextViewWidget('No more data.'),
+                    ),
+                  ),
                 ),
               ),
             ),
