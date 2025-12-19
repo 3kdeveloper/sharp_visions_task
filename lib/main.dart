@@ -1,3 +1,5 @@
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
+
 import 'core/constants/exports.dart';
 
 void main() => runZonedGuarded(
@@ -7,7 +9,6 @@ void main() => runZonedGuarded(
   },
   (error, stackTrace) {
     logger.e(error.toString());
-    // FirebaseCrashlytics.instance.recordError(error, stackTrace);
   },
 );
 
@@ -38,5 +39,6 @@ Future<void> _init() async {
   //   overlays: [SystemUiOverlay.top],
   // );
   await initDependencies();
-  await SvgUtils.preCacheSVGs();
+  await FastCachedImageConfig.init();
+  // await SvgUtils.preCacheSVGs();
 }

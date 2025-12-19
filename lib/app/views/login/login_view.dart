@@ -1,4 +1,4 @@
-import 'package:sharpvisions_task/app/models/demo_model/request/user_body/user_body.dart';
+import 'package:sharpvisions_task/app/models/request/user_body/user_body.dart';
 
 import '../../../core/constants/exports.dart';
 
@@ -145,16 +145,28 @@ class _LoginViewState extends State<LoginView> {
                   builder: (context, controller, _) {
                     return ButtonWidget(
                       btnText: 'Login',
-                      onTap: () => controller.login(
-                        UserBody(
-                          email: _emailController.text.trim(),
-                          password: _passwordController.text.trim(),
+                      onTap: () {
+                        if (context.validateForm(_formKey)) {
+                          controller
+                              .login(
+                                UserBody(
+                                  email: _emailController.text.trim(),
+                                  password: _passwordController.text.trim(),
 
-                          ///! TODO: Get the real device token and pass here
-                          deviceToken: 'iduiowyeiwqyeieyqiweyq',
-                          language: 'en',
-                        ),
-                      ),
+                                  ///! TODO: Get the real device token and pass here
+                                  deviceToken: 'iduiowyeiwqyeieyqiweyq',
+                                  language: 'en',
+                                ),
+                              )
+                              .then((result) {
+                                if (!result && !context.mounted) return;
+
+                                context.pushNamedAndRemoveUntil(
+                                  RouteNames.homeView,
+                                );
+                              });
+                        }
+                      },
                       isShowLoading: controller.isLoading,
                       color: AppColors.primaryColor,
                     );

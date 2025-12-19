@@ -1,3 +1,4 @@
 class ImagesResource {
-  ///! Icons
+  ///! Images
+  static const placeHolderImg = 'assets/images/place_holder.webp';
 }

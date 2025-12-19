@@ -12,5 +12,8 @@ extension ContextExt on BuildContext {
   void requestFocus(FocusNode focusNode) =>
       FocusScope.of(this).requestFocus(focusNode);
 
+  bool validateForm(GlobalKey<FormState> formKey) =>
+      formKey.currentState?.validate() ?? false;
+
   double get bottomPadding => MediaQuery.of(this).viewInsets.bottom;
 }

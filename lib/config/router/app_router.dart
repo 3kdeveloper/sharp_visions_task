@@ -1,3 +1,4 @@
+import 'package:sharpvisions_task/app/view_models/home/home_view_model.dart';
 import 'package:sharpvisions_task/app/views/home/home_view.dart';
 import 'package:sharpvisions_task/app/views/login/login_view.dart';
 
@@ -8,7 +9,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 class AppRouter {
   final appRouter = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/${RouteNames.loginView}',
+    initialLocation: '/${RouteNames.homeView}',
     routes: [
       /// Splash View
       GoRoute(
@@ -26,7 +27,10 @@ class AppRouter {
         parentNavigatorKey: _rootNavigatorKey,
         name: RouteNames.homeView,
         path: '/${RouteNames.homeView}',
-        builder: (_, state) => const HomeView(),
+        builder: (_, state) => ChangeNotifierProvider(
+          create: (context) => HomeViewModel(),
+          child: const HomeView(),
+        ),
       ),
     ],
   );
