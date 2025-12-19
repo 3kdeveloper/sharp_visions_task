@@ -10,8 +10,6 @@ Future<void> initDependencies() async {
   locator.registerLazySingleton<AppRouter>(() => AppRouter());
 
   ///! Utils
-  locator.registerLazySingleton<BottomSheetUtils>(() => BottomSheetUtils());
-  locator.registerLazySingleton<DialogueUtils>(() => DialogueUtils());
   locator.registerLazySingleton<Utils>(() => Utils());
 
   locator.registerLazySingleton<FlutterSecureStorage>(

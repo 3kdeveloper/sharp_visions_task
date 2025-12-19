@@ -29,41 +29,34 @@ class CachedNetworkImageWidget extends StatelessWidget {
   final Widget? errorWidget;
 
   @override
-  Widget build(BuildContext context) =>
-      ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.circular(8),
-        child: imageUrl != null
-            ? FastCachedImage(
-                url: imageUrl!,
-                width: size ?? width ?? double.maxFinite,
-                height: size ?? height,
-                cacheWidth: cacheSize ?? cacheWidth,
-                cacheHeight: cacheSize ?? cacheHeight,
-                fit: fit,
-                fadeInDuration: const Duration(milliseconds: 100),
-                loadingBuilder: (context, url) => Skeletonizer(
-                  enabled: true,
-                  child: Container(
-                    width: size ?? width ?? double.maxFinite,
-                    height: size ?? height,
-                    color: Colors.white,
-                  ),
-                ),
-                errorBuilder: (context, url, error) => Image.asset(
-                  ImagesResource.placeHolderImg,
-                  width: size ?? width ?? double.maxFinite,
-                  height: size ?? height,
-                  fit: BoxFit.cover,
-                ),
-              )
-            : Image.asset(
-                ImagesResource.placeHolderImg,
-                width: size ?? width ?? double.maxFinite,
-                height: size ?? height,
-                fit: BoxFit.cover,
-              ),
-      ).applyShimmer(
-        width: size ?? width ?? double.maxFinite,
-        height: size ?? height,
-      );
+  Widget build(BuildContext context) => ClipRRect(
+    borderRadius: borderRadius ?? BorderRadius.circular(8),
+    child: imageUrl != null
+        ? FastCachedImage(
+            url: imageUrl!,
+            width: size ?? width ?? double.maxFinite,
+            height: size ?? height,
+            cacheWidth: cacheSize ?? cacheWidth,
+            cacheHeight: cacheSize ?? cacheHeight,
+            fit: fit,
+            fadeInDuration: const Duration(milliseconds: 100),
+            loadingBuilder: (context, url) => Container(
+              width: size ?? width ?? double.maxFinite,
+              height: size ?? height,
+              color: Colors.white,
+            ),
+            errorBuilder: (context, url, error) => Image.asset(
+              ImagesResource.placeHolderImg,
+              width: size ?? width ?? double.maxFinite,
+              height: size ?? height,
+              fit: BoxFit.cover,
+            ),
+          )
+        : Image.asset(
+            ImagesResource.placeHolderImg,
+            width: size ?? width ?? double.maxFinite,
+            height: size ?? height,
+            fit: BoxFit.cover,
+          ),
+  );
 }

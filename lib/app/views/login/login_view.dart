@@ -147,6 +147,7 @@ class _LoginViewState extends State<LoginView> {
                       btnText: 'Login',
                       onTap: () async {
                         if (context.validateForm(_formKey)) {
+                          context.unFocusKeyboard();
                           final deviceId =
                               await locator<Utils>().getDeviceId() ?? '';
                           final user = UserBody(

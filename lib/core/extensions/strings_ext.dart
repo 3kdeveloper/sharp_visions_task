@@ -1,9 +1,4 @@
 extension StringsExt on String {
-  String toCapitalize() {
-    if (isEmpty) return this;
-    return this[0].toUpperCase() + substring(1);
-  }
-
   String toCapitalizeEveryWord() {
     if (isEmpty) return this;
     return split(" ")

@@ -81,31 +81,22 @@ class ButtonWidget extends StatelessWidget {
             ),
           if (!isShowLoading)
             Flexible(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (icon != null) SvgPictureAssetWidget(icon!, size: 28),
-                  if (icon != null) SizedBox(width: 8),
-                  Flexible(
-                    child:
-                        child ??
-                        TextViewWidget(
-                          btnText,
-                          isEllipsis: true,
-                          maxLines: 1,
-                          style:
-                              style ??
-                              textTheme.labelLarge?.copyWith(
-                                color: textColor ?? AppColors.whiteColor,
-                                fontWeight: fontWeight ?? FontWeight.w600,
-                              ),
+              child:
+                  child ??
+                  TextViewWidget(
+                    btnText,
+                    isEllipsis: true,
+                    maxLines: 1,
+                    style:
+                        style ??
+                        textTheme.labelLarge?.copyWith(
+                          color: textColor ?? AppColors.whiteColor,
+                          fontWeight: fontWeight ?? FontWeight.w600,
                         ),
                   ),
-                ],
-              ),
             ),
         ],
       ),
-    ).onTap(!isShowLoading ? onTap : () {}).applyShimmer(height: 40.0);
+    ).onTap(!isShowLoading ? onTap : () {});
   }
 }

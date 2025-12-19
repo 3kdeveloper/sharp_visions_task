@@ -92,15 +92,12 @@ class _HomeViewState extends State<HomeView> {
                 builderDelegate: PagedChildBuilderDelegate<DataModel>(
                   itemBuilder: (context, item, index) =>
                       ProductCardWidget(item: item),
-                  firstPageProgressIndicatorBuilder: (_) => const Center(
-                    child: CircularProgressIndicator(color: Color(0xFF00A693)),
-                  ),
+                  firstPageProgressIndicatorBuilder: (_) =>
+                      const Center(child: CupertinoActivityIndicatorWidget()),
                   newPageProgressIndicatorBuilder: (_) => const Center(
                     child: Padding(
                       padding: EdgeInsets.all(16.0),
-                      child: CircularProgressIndicator(
-                        color: Color(0xFF00A693),
-                      ),
+                      child: CupertinoActivityIndicatorWidget(),
                     ),
                   ),
                   noMoreItemsIndicatorBuilder: (context) => Center(
@@ -117,4 +114,8 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
+}
+
+class CircularProgressIndicatorWidget {
+  const CircularProgressIndicatorWidget();
 }

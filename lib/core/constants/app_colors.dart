@@ -9,10 +9,4 @@ class AppColors {
   static const whiteColor = Color(0xFFFFFFFF);
   static const redColor = Color(0xFFAF2424);
   static const borderColor = Color(0xFFDADADA);
-
-  /// Text Colors
-
-  /// Buttons Colors
-
-  /// TextField Colors
 }
