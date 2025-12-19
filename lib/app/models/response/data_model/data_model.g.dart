@@ -12,6 +12,7 @@ DataModel _$DataModelFromJson(Map<String, dynamic> json) =>
         itemImage: json['item_image'] as String?,
         productName: json['p_name'] as String?,
         salesDescription: json['sales_description'] as String?,
+        costPrice: (json['cost_price'] as num?)?.toDouble(),
         salePrice: (json['sale_price'] as num?)?.toDouble(),
       )
       ..productCategories = (json['product_categories'] as List<dynamic>?)
@@ -24,5 +25,6 @@ Map<String, dynamic> _$DataModelToJson(DataModel instance) => <String, dynamic>{
   'item_image': instance.itemImage,
   'p_name': instance.productName,
   'sales_description': instance.salesDescription,
+  'cost_price': instance.costPrice,
   'sale_price': instance.salePrice,
 };

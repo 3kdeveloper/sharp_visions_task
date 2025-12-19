@@ -49,19 +49,11 @@ class CachedNetworkImageWidget extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                errorBuilder: (context, url, error) => DecoratedBox(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.redColor),
-                    borderRadius: borderRadius,
-                  ),
-                  child: Center(
-                    child:
-                        errorWidget ??
-                        const Icon(
-                          Icons.error_outline,
-                          color: AppColors.redColor,
-                        ),
-                  ),
+                errorBuilder: (context, url, error) => Image.asset(
+                  ImagesResource.placeHolderImg,
+                  width: size ?? width ?? double.maxFinite,
+                  height: size ?? height,
+                  fit: BoxFit.cover,
                 ),
               )
             : Image.asset(

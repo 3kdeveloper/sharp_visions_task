@@ -11,6 +11,7 @@ class DataModel {
     this.itemImage,
     this.productName,
     this.salesDescription,
+    this.costPrice,
     this.salePrice,
   });
 
@@ -27,6 +28,9 @@ class DataModel {
 
   @JsonKey(name: 'sales_description')
   final String? salesDescription;
+
+  @JsonKey(name: 'cost_price')
+  final double? costPrice;
 
   @JsonKey(name: 'sale_price')
   final double? salePrice;

@@ -30,34 +30,34 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> fetchProducts({
+  Future<void> fetchProducts({
     required PagingController pagingController,
     required int page,
   }) async {
-    bool isSuccuss = false;
     try {
       _toggleLoading();
       await _client.fetchProducts(page).then((response) {
         final dataList = response.data.data?.dataList;
+        final lastPage = response.data.pagination?.lastPage;
         if (dataList != null) {
           final products = dataList
               .map((item) => DataModel.fromJson(item))
               .toList();
 
-          final isLastPage = products.length < ConstantsResource.pageSize;
+          final isLastPage = page == lastPage;
 
           if (isLastPage) {
             pagingController.appendLastPage(products);
           } else {
-            final nextPageKey = page += 1;
+            final nextPageKey = page + 1;
             pagingController.appendPage(products, nextPageKey);
           }
         }
       });
     } catch (e) {
       logger.e(e.toString());
+      pagingController.error = e;
     }
     _toggleLoading();
-    return isSuccuss;
   }
 }
