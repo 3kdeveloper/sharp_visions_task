@@ -8,6 +8,14 @@ class ProductCardWidget extends StatelessWidget {
 
   const ProductCardWidget({super.key, required this.item});
 
+  double get displayPrice {
+    final salePrice = item.salePrice ?? 0.0;
+    final costPrice = item.costPrice ?? 0.0;
+    return salePrice > 0.0 ? salePrice : costPrice;
+  }
+
+  bool get isOnSale => (item.salePrice ?? 0.0) > 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +42,7 @@ class ProductCardWidget extends StatelessWidget {
               children: [
                 CachedNetworkImageWidget(imageUrl: item.itemImage),
 
-                if ((item.salePrice ?? 0.0) > 0.0)
+                if (isOnSale)
                   Positioned(
                     top: 8,
                     right: 8,
@@ -85,11 +93,7 @@ class ProductCardWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       child: TextViewWidget(
-                        (((item.salePrice ?? 0.0) > 0.0
-                                    ? item.salePrice
-                                    : item.costPrice) ??
-                                0.0)
-                            .toString(),
+                        '\$${displayPrice.toStringAsFixed(2)}',
                         maxLines: 1,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
