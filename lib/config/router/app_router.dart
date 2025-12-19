@@ -6,10 +6,12 @@ import '../../core/constants/exports.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
+// final token = await locator<SecureStorageService>().read(CommonKeys.token);
+
 class AppRouter {
   final appRouter = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/${RouteNames.homeView}',
+    initialLocation: '/${RouteNames.loginView}',
     routes: [
       /// Splash View
       GoRoute(

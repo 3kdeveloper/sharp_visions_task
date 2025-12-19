@@ -19,7 +19,7 @@ class ProductCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 8),
+      padding: EdgeInsets.only(bottom: 4),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -68,26 +68,26 @@ class ProductCardWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 4),
+          // SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(
               crossAxisAlignment: .start,
               children: [
                 TextViewWidget(
-                  item.productName ?? '',
-                  maxLines: 1,
+                  item.productName?.toCapitalizeEveryWord() ?? '',
+                  maxLines: 2,
                   isEllipsis: true,
                   style: textTheme.labelMedium,
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 6),
                 TextViewWidget(
                   item.salesDescription ?? '',
                   style: textTheme.labelSmall?.copyWith(
                     color: AppColors.blackColor.withValues(alpha: 0.6),
                   ),
                 ),
-                SizedBox(height: 4),
+                SizedBox(height: 2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

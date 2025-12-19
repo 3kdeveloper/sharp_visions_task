@@ -145,26 +145,25 @@ class _LoginViewState extends State<LoginView> {
                   builder: (context, controller, _) {
                     return ButtonWidget(
                       btnText: 'Login',
-                      onTap: () {
+                      onTap: () async {
                         if (context.validateForm(_formKey)) {
-                          controller
-                              .login(
-                                UserBody(
-                                  email: _emailController.text.trim(),
-                                  password: _passwordController.text.trim(),
+                          final deviceId =
+                              await locator<Utils>().getDeviceId() ?? '';
+                          final user = UserBody(
+                            email: _emailController.text.trim(),
+                            password: _passwordController.text.trim(),
+                            deviceToken: deviceId,
+                            language: 'en',
+                          );
+                          logger.f(user.toJson());
 
-                                  ///! TODO: Get the real device token and pass here
-                                  deviceToken: 'iduiowyeiwqyeieyqiweyq',
-                                  language: 'en',
-                                ),
-                              )
-                              .then((result) {
-                                if (!result && !context.mounted) return;
+                          controller.login(user).then((result) {
+                            if (!result && !context.mounted) return;
 
-                                context.pushNamedAndRemoveUntil(
-                                  RouteNames.homeView,
-                                );
-                              });
+                            context.pushNamedAndRemoveUntil(
+                              RouteNames.homeView,
+                            );
+                          });
                         }
                       },
                       isShowLoading: controller.isLoading,

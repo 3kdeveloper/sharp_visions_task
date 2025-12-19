@@ -37,7 +37,6 @@ export 'package:sharpvisions_task/core/extensions/widget_ext.dart';
 export 'package:sharpvisions_task/core/utils/bottom_sheet_utils.dart';
 export 'package:sharpvisions_task/core/utils/dialogue_utils.dart';
 export 'package:sharpvisions_task/core/utils/injection_container.dart';
-export 'package:sharpvisions_task/core/utils/svg_utils.dart';
 export 'package:sharpvisions_task/core/utils/utils.dart';
 export 'package:sharpvisions_task/core/utils/validation.dart';
 export 'package:sharpvisions_task/main.dart';

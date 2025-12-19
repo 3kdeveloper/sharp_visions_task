@@ -40,5 +40,4 @@ Future<void> _init() async {
   // );
   await initDependencies();
   await FastCachedImageConfig.init();
-  // await SvgUtils.preCacheSVGs();
 }
